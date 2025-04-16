@@ -10,8 +10,6 @@ This is a simple 2D implementation of the classic game Flappy Bird, created usin
     * [Tools Used](#tools-used)
     * [Key Concepts Explored](#key-concepts-explored)
 * [Future Enhancements](#future-enhancements)
-* [License](#license)
-* [Contact](#contact)
 
 ## Features
 
