@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     public float gravity = -9.8f;
     public float jumpForce = 5f;
 
+    public AudioSource flapSound;
+    public AudioSource scoringSound;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -34,6 +37,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             direction = Vector3.up * jumpForce;
+            PlayFlap();
         }
 
         if (Input.touchCount > 0)
@@ -43,6 +47,7 @@ public class Player : MonoBehaviour
             if (touch.phase == TouchPhase.Began)
             {
                 direction = Vector3.up * jumpForce;
+                PlayFlap();
             }
         }
 
@@ -50,6 +55,15 @@ public class Player : MonoBehaviour
         // because gravity is m^2 we multiply it by deltaTime twice
         direction.y += gravity * Time.deltaTime;
         transform.position += direction * Time.deltaTime;
+    }
+
+    private void PlayFlap()
+    {
+        flapSound.Play();
+    }
+    private void PlayScoringSound()
+    {
+        scoringSound.Play();
     }
 
     private void AnimateSprite()
@@ -72,6 +86,7 @@ public class Player : MonoBehaviour
         else if (collision.CompareTag("Scoring"))
         {
             FindAnyObjectByType<GameManager>().IncreaseScore();
+            PlayScoringSound();
         }
     }
 }

@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     private int score;
     private int personalBest;
 
+    public AudioSource gameOverSound;
+
     private void Awake()
     {
         Application.targetFrameRate = 144;
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
+        gameOverSound.Play();
         gameOver.SetActive(true);
         playButton.SetActive(true);
         if (score > personalBest)
