@@ -15,6 +15,7 @@ This is a simple 2D implementation of the classic game Flappy Bird, created usin
 
 * **Simple and Addictive Gameplay:** Press space to make the bird flap and navigate through pipes.
 * **Score Tracking:** Keeps track of the player's score as they successfully pass through pipes.
+* **Personal Best** Keeps your personal best score even after closing the game.
 * **Collision Detection:** Implements basic collision detection with pipes and the ground.
 * **Game Over State:** Clearly indicates when the game ends and displays the final score.
 
@@ -53,5 +54,4 @@ Through the development of this Flappy Bird clone, I gained practical experience
 Here are some potential features and improvements I might consider adding in the future:
 
 * **Difficulty Scaling:** Gradually increasing the game's difficulty as the player progresses.
-* **Score Persistence:** Saving and loading high scores.
 * **Multiple Bird Skins:** Allowing players to unlock or choose different bird appearances.
