@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.LowLevel;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -17,6 +16,10 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 144;
+
+        personalBest = PlayerPrefs.GetInt("PersonalBest", 0);
+        personalBestText.text = "Best: " + personalBest.ToString();
+
         Pause();
     }
 
@@ -30,7 +33,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         player.enabled = true;
 
-        Pipes[] pipes = FindObjectsOfType<Pipes>();
+        Pipes[] pipes = FindObjectsByType<Pipes>(FindObjectsSortMode.None);
 
         for(int i = 0; i < pipes.Length; i++)
         {
@@ -50,6 +53,7 @@ public class GameManager : MonoBehaviour
         if (score > personalBest)
         {
             personalBest = score;
+            SavePersonalBest();
             personalBestText.text = "Best: " + score.ToString();
         }
 
@@ -59,5 +63,11 @@ public class GameManager : MonoBehaviour
     {
         score++;
         scoreText.text = score.ToString();
+    }
+
+    private void SavePersonalBest()
+    {
+        PlayerPrefs.SetInt("PersonalBest", personalBest);
+        PlayerPrefs.Save();
     }
 }
